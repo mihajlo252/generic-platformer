@@ -1,3 +1,11 @@
 *, *::before, *::after {
     box-sizing: border-box;
 } 
+
+p {
+    position: absolute;
+    top: 600px;
+    left: 900px;
+    color: red;
+    font-size: 50px;
+}

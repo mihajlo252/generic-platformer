@@ -93,6 +93,9 @@ function animate() {
 animate();
 
 window.addEventListener("keydown", (event) => {
+    if(player.position.x === 968) {
+        document.querySelector("p").innerText = "VICTORY"
+    }
     switch (event.key) {
         case "d":
             lastKey = "d";
@@ -133,3 +136,4 @@ window.addEventListener("keyup", (event) => {
             break;
     }
 });
+
