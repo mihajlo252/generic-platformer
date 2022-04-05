@@ -6,13 +6,13 @@ canvas.height = 900;
 
 c.fillRect(0, 0, canvas.width, canvas.height);
 
-const gravity = 1;
+var gravity = 1;
 
 class Sprite {
     constructor({ position, velocity }) {
         this.position = position;
         this.velocity = velocity;
-        this.height = 150;
+        this.height = 100;
         this.width = 50;
     }
 
@@ -26,6 +26,12 @@ class Sprite {
 
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
+        if (this.velocity.y > 0) {
+            if (this.position.y + this.height === canvas.height - this.height) {
+                gravity = 0;
+                this.velocity.y = 0;
+            }
+        }
 
         if (this.position.y + this.height + this.velocity.y >= canvas.height) {
             this.velocity.y = 0;
@@ -63,7 +69,7 @@ const keys = {
     },
     d: {
         pressed: false,
-    }
+    },
 };
 
 let lastKey;
@@ -73,7 +79,7 @@ function animate() {
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
     player.update();
-    // enemy.update();
+    enemy.update();
 
     player.velocity.x = 0;
 
@@ -89,18 +95,31 @@ animate();
 window.addEventListener("keydown", (event) => {
     switch (event.key) {
         case "d":
-            keys.d.pressed = true;
             lastKey = "d";
+            if (
+                player.position.x + player.width >= enemy.position.x &&
+                player.position.x + player.width <= enemy.position.x + enemy.width
+            ) {
+                keys.d.pressed = false;
+            } else {
+                keys.d.pressed = true;
+            }
             break;
         case "a":
             keys.a.pressed = true;
             lastKey = "a";
+
             break;
-        case "w":
-            if(player.position.y + player.height >= canvas.height) {
-                player.velocity.y = -25
-            }
-            break;
+        // case "w":
+        //     if (
+        //         (player.position.y + player.height >= canvas.height ||
+        //             player.position.y + player.height ===
+        //                 canvas.height - player.height)
+        //     ) {
+        //         gravity = 1;
+        //         player.velocity.y = -22;
+        //     }
+        //     break;
     }
 });
 
@@ -112,6 +131,5 @@ window.addEventListener("keyup", (event) => {
         case "a":
             keys.a.pressed = false;
             break;
-        
     }
 });
