@@ -51,7 +51,11 @@ class Sprite {
             player.velocity.x = 0;
             player.position.x = this.position.x + this.width;
         }
+        if (player.position.x > 1200 && player.position.y + player.height) {
+            document.querySelector("p").innerText = "VICTORY";
+        }
     }
+    
 }
 
 class Character {
