@@ -17,6 +17,7 @@ const player = new Character({
         x: 0,
         y: 8,
     },
+    color: "red",
 });
 
 var platform1 = new Sprite({
@@ -26,6 +27,7 @@ var platform1 = new Sprite({
     },
     height: 50,
     width: 150,
+    color: "blue",
 });
 
 var platform2 = new Sprite({
@@ -35,6 +37,7 @@ var platform2 = new Sprite({
     },
     height: 50,
     width: 150,
+    color: "blue",
 });
 
 var platform3 = new Sprite({
@@ -44,6 +47,7 @@ var platform3 = new Sprite({
     },
     height: 50,
     width: 150,
+    color: "blue",
 });
 
 var platform4 = new Sprite({
@@ -53,6 +57,7 @@ var platform4 = new Sprite({
     },
     height: 50,
     width: 150,
+    color: "blue",
 });
 
 var platform5 = new Sprite({
@@ -62,6 +67,7 @@ var platform5 = new Sprite({
     },
     height: 50,
     width: 150,
+    color: "blue",
 });
 
 var platform6 = new Sprite({
@@ -71,6 +77,7 @@ var platform6 = new Sprite({
     },
     height: 50,
     width: 150,
+    color: "green",
 });
 
 const keys = {
@@ -108,7 +115,6 @@ function animate() {
     } else if (keys.d.pressed && player.lastKey === "d") {
         player.velocity.x = 8;
     }
-
 }
 
 animate();
@@ -141,4 +147,3 @@ window.addEventListener("keyup", (event) => {
             break;
     }
 });
-

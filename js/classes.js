@@ -1,12 +1,13 @@
 class Sprite {
-    constructor({ position, height, width }) {
+    constructor({ position, height, width, color }) {
         this.position = position;
         this.height = height;
         this.width = width;
+        this.color = color;
     }
 
     draw() {
-        c.fillStyle = "blue";
+        c.fillStyle = this.color;
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
@@ -55,21 +56,21 @@ class Sprite {
             document.querySelector("p").innerText = "VICTORY";
         }
     }
-    
 }
 
 class Character {
-    constructor({ position, velocity }) {
+    constructor({ position, velocity, color }) {
         this.position = position;
         this.velocity = velocity;
         this.height = 100;
         this.width = 50;
         this.lastKey;
         this.isFalling = false;
+        this.color = color;
     }
 
     draw() {
-        c.fillStyle = "red";
+        c.fillStyle = this.color;
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
@@ -87,7 +88,7 @@ class Character {
         }
 
         if (this.position.y + this.height >= canvas.height) {
-            this.position.y = canvas.height - this.height
+            this.position.y = canvas.height - this.height;
             this.velocity.y = 0;
         } else {
             this.velocity.y += gravity;
