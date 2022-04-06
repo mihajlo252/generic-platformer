@@ -8,35 +8,10 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity = 1;
 
-class Sprite {
-    constructor({ position, velocity }) {
-        this.position = position;
-        this.velocity = velocity;
-        this.height = 150;
-        this.width = 50;
-    }
-
-    draw() {
-        c.fillStyle = "red";
-        c.fillRect(this.position.x, this.position.y, this.width, this.height);
-    }
-
-    update() {
-        this.draw();
-
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-
-        if (this.position.y + this.height + this.velocity.y >= canvas.height) {
-            this.velocity.y = 0;
-        } else this.velocity.y += gravity;
-    }
-}
-
-const player = new Sprite({
+const player = new Character({
     position: {
         x: 0,
-        y: 0,
+        y: 750,
     },
     velocity: {
         x: 0,
@@ -44,18 +19,59 @@ const player = new Sprite({
     },
 });
 
-const enemy = new Sprite({
+var platform1 = new Sprite({
+    position: {
+        x: 200,
+        y: 800,
+    },
+    height: 50,
+    width: 150,
+});
+
+var platform2 = new Sprite({
     position: {
         x: 400,
-        y: 0,
+        y: 700,
     },
-    velocity: {
-        x: 0,
-        y: 8,
-    },
+    height: 50,
+    width: 150,
 });
 
-console.log(player);
+var platform3 = new Sprite({
+    position: {
+        x: 600,
+        y: 600,
+    },
+    height: 50,
+    width: 150,
+});
+
+var platform4 = new Sprite({
+    position: {
+        x: 800,
+        y: 500,
+    },
+    height: 50,
+    width: 150,
+});
+
+var platform5 = new Sprite({
+    position: {
+        x: 1000,
+        y: 400,
+    },
+    height: 50,
+    width: 150,
+});
+
+var platform6 = new Sprite({
+    position: {
+        x: 1200,
+        y: 300,
+    },
+    height: 50,
+    width: 150,
+});
 
 const keys = {
     a: {
@@ -63,25 +79,36 @@ const keys = {
     },
     d: {
         pressed: false,
-    }
+    },
+    ArrowLeft: {
+        pressed: false,
+    },
+    ArrowRight: {
+        pressed: false,
+    },
 };
-
-let lastKey;
 
 function animate() {
     window.requestAnimationFrame(animate);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
     player.update();
-    // enemy.update();
+    platform1.update();
+    platform2.update();
+    platform3.update();
+    platform4.update();
+    platform5.update();
+    platform6.update();
 
     player.velocity.x = 0;
 
-    if (keys.a.pressed && lastKey === "a") {
+    // player movement
+    if (keys.a.pressed && player.lastKey === "a") {
         player.velocity.x = -8;
-    } else if (keys.d.pressed && lastKey === "d") {
+    } else if (keys.d.pressed && player.lastKey === "d") {
         player.velocity.x = 8;
     }
+
 }
 
 animate();
@@ -90,15 +117,15 @@ window.addEventListener("keydown", (event) => {
     switch (event.key) {
         case "d":
             keys.d.pressed = true;
-            lastKey = "d";
+            player.lastKey = "d";
             break;
         case "a":
             keys.a.pressed = true;
-            lastKey = "a";
+            player.lastKey = "a";
             break;
         case "w":
-            if(player.position.y + player.height >= canvas.height) {
-                player.velocity.y = -25
+            if (player.isFalling && player.velocity.y === 0) {
+                player.velocity.y = -20;
             }
             break;
     }
@@ -112,6 +139,5 @@ window.addEventListener("keyup", (event) => {
         case "a":
             keys.a.pressed = false;
             break;
-        
     }
 });
