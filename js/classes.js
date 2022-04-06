@@ -87,6 +87,7 @@ class Character {
         }
 
         if (this.position.y + this.height >= canvas.height) {
+            this.position.y = canvas.height - this.height
             this.velocity.y = 0;
         } else {
             this.velocity.y += gravity;
