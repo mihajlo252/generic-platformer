@@ -20,7 +20,7 @@ const player = new Character({
     color: "red",
 });
 
-var platform1 = new Sprite({
+const platform1 = new Sprite({
     position: {
         x: 340,
         y: 730,
@@ -30,7 +30,7 @@ var platform1 = new Sprite({
     color: "blue",
 });
 
-var platform2 = new Sprite({
+const platform2 = new Sprite({
     position: {
         x: 950,
         y: 600,
@@ -40,7 +40,7 @@ var platform2 = new Sprite({
     color: "blue",
 });
 
-var platform3 = new Sprite({
+const platform3 = new Sprite({
     position: {
         x: 700,
         y: 500,
@@ -50,7 +50,7 @@ var platform3 = new Sprite({
     color: "blue",
 });
 
-var platform4 = new Sprite({
+const platform4 = new Sprite({
     position: {
         x: 500,
         y: 400,
@@ -60,7 +60,7 @@ var platform4 = new Sprite({
     color: "blue",
 });
 
-var platform5 = new Sprite({
+const platform5 = new Sprite({
     position: {
         x: 700,
         y: 300,
@@ -70,7 +70,7 @@ var platform5 = new Sprite({
     color: "blue",
 });
 
-var platform6 = new Sprite({
+const platform6 = new Sprite({
     position: {
         x: 400,
         y: 200,
@@ -80,7 +80,7 @@ var platform6 = new Sprite({
     color: "transparent",
 });
 
-var platform7 = new Sprite({
+const platform7 = new Sprite({
     position: {
         x: 150,
         y: 100,
@@ -109,7 +109,7 @@ function animate() {
     window.requestAnimationFrame(animate);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
-    player.update();
+    player.gravity();
     platform1.update();
     platform2.update();
     platform3.update();
@@ -117,6 +117,8 @@ function animate() {
     platform5.update();
     platform6.update();
     platform7.update();
+    player.update();
+    
 
     player.velocity.x = 0;
 

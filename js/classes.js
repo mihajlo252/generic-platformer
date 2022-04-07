@@ -98,6 +98,5 @@ class Character {
 
     update() {
         this.draw();
-        this.gravity();
     }
 }
