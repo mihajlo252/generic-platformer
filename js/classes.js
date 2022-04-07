@@ -11,13 +11,11 @@ class Sprite {
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
-    update() {
-        this.draw();
-
+    collision() {
         if (
             player.isFalling &&
             player.position.y + player.height >= this.position.y &&
-            player.position.y + player.height <= this.position.y + this.height / 4 &&
+            player.position.y + player.height <= this.position.y + this.height / 2 &&
             ((player.position.x + player.width >= this.position.x &&
                 player.position.x + player.width <= this.position.x + this.height) ||
                 (player.position.x >= this.position.x &&
@@ -52,9 +50,14 @@ class Sprite {
             player.velocity.x = 0;
             player.position.x = this.position.x + this.width;
         }
-        if (player.position.x > 1200 && player.position.y + player.height <= 300 ) {
+        if (player.position.x < 250 && player.position.y + player.height <= 150) {
             document.querySelector("p").innerText = "VICTORY";
         }
+    }
+
+    update() {
+        this.draw();
+        this.collision();
     }
 }
 
@@ -74,9 +77,7 @@ class Character {
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
-    update() {
-        this.draw();
-
+    gravity() {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
 
@@ -93,5 +94,10 @@ class Character {
         } else {
             this.velocity.y += gravity;
         }
+    }
+
+    update() {
+        this.draw();
+        this.gravity();
     }
 }

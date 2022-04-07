@@ -22,18 +22,18 @@ const player = new Character({
 
 var platform1 = new Sprite({
     position: {
-        x: 200,
-        y: 800,
+        x: 340,
+        y: 730,
     },
-    height: 50,
-    width: 150,
+    height: 30,
+    width: 1100,
     color: "blue",
 });
 
 var platform2 = new Sprite({
     position: {
-        x: 400,
-        y: 700,
+        x: 950,
+        y: 600,
     },
     height: 50,
     width: 150,
@@ -42,8 +42,8 @@ var platform2 = new Sprite({
 
 var platform3 = new Sprite({
     position: {
-        x: 600,
-        y: 600,
+        x: 700,
+        y: 500,
     },
     height: 50,
     width: 150,
@@ -52,8 +52,8 @@ var platform3 = new Sprite({
 
 var platform4 = new Sprite({
     position: {
-        x: 800,
-        y: 500,
+        x: 500,
+        y: 400,
     },
     height: 50,
     width: 150,
@@ -62,8 +62,8 @@ var platform4 = new Sprite({
 
 var platform5 = new Sprite({
     position: {
-        x: 1000,
-        y: 400,
+        x: 700,
+        y: 300,
     },
     height: 50,
     width: 150,
@@ -72,8 +72,18 @@ var platform5 = new Sprite({
 
 var platform6 = new Sprite({
     position: {
-        x: 1200,
-        y: 300,
+        x: 400,
+        y: 200,
+    },
+    height: 50,
+    width: 150,
+    color: "transparent",
+});
+
+var platform7 = new Sprite({
+    position: {
+        x: 150,
+        y: 100,
     },
     height: 50,
     width: 150,
@@ -106,6 +116,7 @@ function animate() {
     platform4.update();
     platform5.update();
     platform6.update();
+    platform7.update();
 
     player.velocity.x = 0;
 
