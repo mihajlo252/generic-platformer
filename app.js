@@ -106,7 +106,6 @@ const keys = {
 };
 
 function animate() {
-    console.log(player.position.y + player.height)
     window.requestAnimationFrame(animate);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
