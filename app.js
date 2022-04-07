@@ -25,7 +25,7 @@ var platform1 = new Sprite({
         x: 340,
         y: 730,
     },
-    height: 30,
+    height: 50,
     width: 1100,
     color: "blue",
 });
@@ -106,6 +106,7 @@ const keys = {
 };
 
 function animate() {
+    console.log(player.position.y + player.height)
     window.requestAnimationFrame(animate);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);

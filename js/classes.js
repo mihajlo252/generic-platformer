@@ -15,7 +15,7 @@ class Sprite {
         if (
             player.isFalling &&
             player.position.y + player.height >= this.position.y &&
-            player.position.y + player.height <= this.position.y + this.height / 2 &&
+            player.position.y + player.height <= this.position.y + this.height / 1.6 &&
             ((player.position.x + player.width >= this.position.x &&
                 player.position.x + player.width <= this.position.x + this.height) ||
                 (player.position.x >= this.position.x &&
