@@ -8,22 +8,31 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity = 1;
 
-const player = new Character({
+const background = new Sprite({
     position: {
         x: 0,
+        y: 0,
+    },
+    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Background/sky_cloud.png",
+    framesMax: 1,
+    scale: 5,
+});
+
+const player = new Character({
+    position: {
+        x: 200,
         y: 400,
     },
     velocity: {
         x: 0,
         y: 8,
     },
-    color: "red",
     imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Idle.png",
     framesMax: 8,
-    scale: 3,
+    scale: 2.4,
     offset: {
-        x: 185,
-        y: 161.5,
+        x: 148,
+        y: 129,
     },
     sprites: {
         idleRight: {
@@ -63,72 +72,86 @@ const player = new Character({
 
 const platform1 = new Sprite({
     position: {
-        x: 340,
-        y: 730,
+        x: 0,
+        y: 850,
     },
     height: 50,
-    width: 1100,
-    color: "blue",
+    width: 1440,
+    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Tile/Grass/grass_long.png",
+    framesMax: 1,
+    scale: 1,
 });
 
 const platform2 = new Sprite({
     position: {
         x: 950,
-        y: 600,
+        y: 700,
     },
     height: 50,
     width: 150,
-    color: "blue",
+    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Tile/Grass/grass_short.png",
+    framesMax: 1,
+    scale: 1,
 });
 
 const platform3 = new Sprite({
     position: {
         x: 700,
-        y: 500,
+        y: 600,
     },
     height: 50,
     width: 150,
-    color: "blue",
+    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Tile/Grass/grass_short.png",
+    framesMax: 1,
+    scale: 1,
 });
 
 const platform4 = new Sprite({
     position: {
         x: 500,
-        y: 400,
+        y: 500,
     },
     height: 50,
     width: 150,
-    color: "blue",
+    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Tile/Grass/grass_short.png",
+    framesMax: 1,
+    scale: 1,
 });
 
 const platform5 = new Sprite({
     position: {
         x: 700,
-        y: 300,
+        y: 400,
     },
     height: 50,
     width: 150,
-    color: "blue",
+    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Tile/Grass/grass_short.png",
+    framesMax: 1,
+    scale: 1,
 });
 
 const platform6 = new Sprite({
     position: {
         x: 400,
-        y: 200,
+        y: 300,
     },
     height: 50,
     width: 150,
-    color: "transparent",
+    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Tile/Grass/grass_short.png",
+    framesMax: 1,
+    scale: 1,
 });
 
 const platform7 = new Sprite({
     position: {
         x: 150,
-        y: 100,
+        y: 200,
     },
     height: 50,
     width: 150,
-    color: "green",
+    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Tile/Grass/grass_short.png",
+    framesMax: 1,
+    scale: 1,
 });
 
 const keys = {
@@ -148,8 +171,9 @@ const keys = {
 
 function animate() {
     window.requestAnimationFrame(animate);
-    c.fillStyle = "black";
-    c.fillRect(0, 0, canvas.width, canvas.height);
+    // c.fillStyle = "black";
+    // c.fillRect(0, 0, canvas.width, canvas.height);
+    background.update();
     player.gravity();
     platform1.update();
     platform2.update();
@@ -166,35 +190,31 @@ function animate() {
 
     if (keys.a.pressed && player.lastKey === "a") {
         player.velocity.x = -8;
-        player.switchSprite("runLeft")
+        player.switchSprite("runLeft");
     } else if (keys.d.pressed && player.lastKey === "d") {
         player.velocity.x = 8;
-        player.switchSprite("runRight")
+        player.switchSprite("runRight");
     } else {
         if (player.lastKey === "a") {
-            player.switchSprite("idleLeft")
+            player.switchSprite("idleLeft");
         } else if (player.lastKey === "d") {
-            player.switchSprite("idleRight")
-        }   
+            player.switchSprite("idleRight");
+        }
     }
 
     if (player.velocity.y < 0) {
-        if (player.lastKey === "a"){
-            player.switchSprite("jumpLeft")
+        if (player.lastKey === "a") {
+            player.switchSprite("jumpLeft");
         } else if (player.lastKey === "d") {
-            player.switchSprite("jumpRight")
+            player.switchSprite("jumpRight");
         }
     } else if (player.velocity.y > 0) {
-        if (player.lastKey === "a"){
-            player.switchSprite("fallLeft")
+        if (player.lastKey === "a") {
+            player.switchSprite("fallLeft");
         } else if (player.lastKey === "d") {
-            player.switchSprite("fallRight")
+            player.switchSprite("fallRight");
         }
     }
-     
-
-    
-        
 }
 
 animate();

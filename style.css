@@ -1,11 +1,12 @@
 *, *::before, *::after {
     box-sizing: border-box;
+    font-family: 'MedievalSharp', cursive;
 } 
 
 p {
     position: absolute;
     font-size: 40px;
-    top: 200px;
-    left: 200px;
-    color: red;
+    top: 100px;
+    left: 700px;
+    color: rgb(255, 0, 0);
 }

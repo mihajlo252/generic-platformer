@@ -7,8 +7,6 @@ class Img {
         offset = { x: 0, y: 0 },
     }) {
         this.position = position;
-        this.width = 50;
-        this.height = 150;
         this.image = new Image();
         this.image.src = imgSrc;
         this.scale = scale;
@@ -50,17 +48,30 @@ class Img {
     }
 }
 
-class Sprite {
-    constructor({ position, height, width, color }) {
-        this.position = position;
-        this.height = height;
-        this.width = width;
-        this.color = color;
-    }
+class Sprite extends Img {
+    constructor({
+        position,
+        height,
+        width,
+        imgSrc,
+        scale = 1,
+        framesMax = 1,
+        offset = { x: 0, y: 0 },
+    }) {
+        super ({
+            position,
+            imgSrc,
+            scale,
+            framesMax,
+            offset,
+        });
 
-    draw() {
-        c.fillStyle = this.color;
-        c.fillRect(this.position.x, this.position.y, this.width, this.height);
+        this.position = position;
+        this.height = height * this.scale;
+        this.width = width * this.scale;
+        this.framesCurrent = 0;
+        this.framesElapsed = 0;
+        this.framesHold = 7;
     }
 
     collision() {
@@ -103,8 +114,8 @@ class Sprite {
             player.velocity.x = 0;
             player.position.x = this.position.x + this.width;
         }
-        if (player.position.x < 250 && player.position.y + player.height <= 150) {
-            document.querySelector("p").innerText = "VICTORY";
+        if (player.position.x < 250 && player.position.y + player.height <= 200) {
+            document.querySelector("p").innerText = "VICTORY!";
         }
     }
 
@@ -171,53 +182,53 @@ class Character extends Img {
             case "idleRight":
                 if (this.image !== this.sprites.idleRight.image) {
                     this.image = this.sprites.idleRight.image;
-                    this.framesMax = this.sprites.idleRight.framesMax
+                    this.framesMax = this.sprites.idleRight.framesMax;
                 }
                 break;
             case "idleLeft":
                 if (this.image !== this.sprites.idleLeft.image) {
                     this.image = this.sprites.idleLeft.image;
-                    this.framesMax = this.sprites.idleLeft.framesMax
+                    this.framesMax = this.sprites.idleLeft.framesMax;
                 }
                 break;
             case "runRight":
                 if (this.image !== this.sprites.runRight.image) {
                     this.image = this.sprites.runRight.image;
-                    this.framesMax = this.sprites.runRight.framesMax
+                    this.framesMax = this.sprites.runRight.framesMax;
                 }
                 break;
             case "runLeft":
                 if (this.image !== this.sprites.runLeft.image) {
                     this.image = this.sprites.runLeft.image;
-                    this.framesMax = this.sprites.runLeft.framesMax
+                    this.framesMax = this.sprites.runLeft.framesMax;
                 }
                 break;
             case "jumpRight":
                 if (this.image !== this.sprites.jumpRight.image) {
                     this.image = this.sprites.jumpRight.image;
-                    this.framesMax = this.sprites.jumpRight.framesMax
-                    this.framesCurrent = 0
+                    this.framesMax = this.sprites.jumpRight.framesMax;
+                    this.framesCurrent = 0;
                 }
                 break;
             case "jumpLeft":
                 if (this.image !== this.sprites.jumpLeft.image) {
                     this.image = this.sprites.jumpLeft.image;
-                    this.framesMax = this.sprites.jumpLeft.framesMax
-                    this.framesCurrent = 0
+                    this.framesMax = this.sprites.jumpLeft.framesMax;
+                    this.framesCurrent = 0;
                 }
                 break;
             case "fallRight":
                 if (this.image !== this.sprites.fallRight.image) {
                     this.image = this.sprites.fallRight.image;
-                    this.framesMax = this.sprites.fallRight.framesMax
-                    this.framesCurrent = 0
+                    this.framesMax = this.sprites.fallRight.framesMax;
+                    this.framesCurrent = 0;
                 }
                 break;
             case "fallLeft":
                 if (this.image !== this.sprites.fallLeft.image) {
                     this.image = this.sprites.fallLeft.image;
-                    this.framesMax = this.sprites.fallLeft.framesMax
-                    this.framesCurrent = 0
+                    this.framesMax = this.sprites.fallLeft.framesMax;
+                    this.framesCurrent = 0;
                 }
                 break;
         }
