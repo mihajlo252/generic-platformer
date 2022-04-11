@@ -11,13 +11,54 @@ const gravity = 1;
 const player = new Character({
     position: {
         x: 0,
-        y: 750,
+        y: 400,
     },
     velocity: {
         x: 0,
         y: 8,
     },
     color: "red",
+    imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Idle.png",
+    framesMax: 8,
+    scale: 3,
+    offset: {
+        x: 185,
+        y: 161.5,
+    },
+    sprites: {
+        idleRight: {
+            imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Idle_right.png",
+            framesMax: 8,
+        },
+        idleLeft: {
+            imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Idle_left.png",
+            framesMax: 8,
+        },
+        runRight: {
+            imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Run_right.png",
+            framesMax: 8,
+        },
+        runLeft: {
+            imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Run_left.png",
+            framesMax: 8,
+        },
+        jumpRight: {
+            imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Jump_right.png",
+            framesMax: 2,
+        },
+        jumpLeft: {
+            imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Jump_left.png",
+            framesMax: 2,
+        },
+        fallRight: {
+            imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Fall_right.png",
+            framesMax: 2,
+        },
+        fallLeft: {
+            imgSrc: "assets/Medieval Warrior Pack 2/Sprites/Fall_left.png",
+            framesMax: 2,
+        },
+    },
 });
 
 const platform1 = new Sprite({
@@ -118,16 +159,42 @@ function animate() {
     platform6.update();
     platform7.update();
     player.update();
-    
 
     player.velocity.x = 0;
 
     // player movement
+
     if (keys.a.pressed && player.lastKey === "a") {
         player.velocity.x = -8;
+        player.switchSprite("runLeft")
     } else if (keys.d.pressed && player.lastKey === "d") {
         player.velocity.x = 8;
+        player.switchSprite("runRight")
+    } else {
+        if (player.lastKey === "a") {
+            player.switchSprite("idleLeft")
+        } else if (player.lastKey === "d") {
+            player.switchSprite("idleRight")
+        }   
     }
+
+    if (player.velocity.y < 0) {
+        if (player.lastKey === "a"){
+            player.switchSprite("jumpLeft")
+        } else if (player.lastKey === "d") {
+            player.switchSprite("jumpRight")
+        }
+    } else if (player.velocity.y > 0) {
+        if (player.lastKey === "a"){
+            player.switchSprite("fallLeft")
+        } else if (player.lastKey === "d") {
+            player.switchSprite("fallRight")
+        }
+    }
+     
+
+    
+        
 }
 
 animate();

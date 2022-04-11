@@ -1,3 +1,55 @@
+class Img {
+    constructor({
+        position,
+        imgSrc,
+        scale = 1,
+        framesMax = 1,
+        offset = { x: 0, y: 0 },
+    }) {
+        this.position = position;
+        this.width = 50;
+        this.height = 150;
+        this.image = new Image();
+        this.image.src = imgSrc;
+        this.scale = scale;
+        this.framesMax = framesMax;
+        this.framesCurrent = 0;
+        this.framesElapsed = 0;
+        this.framesHold = 5;
+        this.offset = offset;
+    }
+
+    draw() {
+        // c.fillStyle = "red"
+        // c.fillRect(this.position.x, this.position.y, this.width, this.height)
+
+        c.drawImage(
+            this.image,
+            this.framesCurrent * (this.image.width / this.framesMax),
+            0,
+            this.image.width / this.framesMax,
+            this.image.height,
+            this.position.x - this.offset.x,
+            this.position.y - this.offset.y,
+            (this.image.width / this.framesMax) * this.scale,
+            this.image.height * this.scale
+        );
+    }
+
+    update() {
+        this.draw();
+        this.framesElapsed++;
+
+        if (this.framesElapsed % this.framesHold === 0) {
+            if (this.framesCurrent < this.framesMax - 1) {
+                this.framesCurrent++;
+            } else {
+                this.framesCurrent = 0;
+            }
+        }
+    }
+}
+
 class Sprite {
     constructor({ position, height, width, color }) {
         this.position = position;
@@ -15,9 +67,10 @@ class Sprite {
         if (
             player.isFalling &&
             player.position.y + player.height >= this.position.y &&
-            player.position.y + player.height <= this.position.y + this.height / 1.6 &&
+            player.position.y + player.height <=
+                this.position.y + this.height / 1.6 &&
             ((player.position.x + player.width >= this.position.x &&
-                player.position.x + player.width <= this.position.x + this.height) ||
+                player.position.x + player.width <= this.position.x + this.width) ||
                 (player.position.x >= this.position.x &&
                     player.position.x <= this.position.x + this.width))
         ) {
@@ -61,20 +114,37 @@ class Sprite {
     }
 }
 
-class Character {
-    constructor({ position, velocity, color }) {
-        this.position = position;
+class Character extends Img {
+    constructor({
+        position,
+        velocity,
+        imgSrc,
+        scale = 1,
+        framesMax = 1,
+        offset = { x: 0, y: 0 },
+        sprites,
+    }) {
+        super({
+            position,
+            imgSrc,
+            scale,
+            framesMax,
+            offset,
+        });
         this.velocity = velocity;
-        this.height = 100;
-        this.width = 50;
+        this.height = 41 * this.scale;
+        this.width = 27 * this.scale;
         this.lastKey;
         this.isFalling = false;
-        this.color = color;
-    }
+        this.framesCurrent = 0;
+        this.framesElapsed = 0;
+        this.framesHold = 7;
+        this.sprites = sprites;
 
-    draw() {
-        c.fillStyle = this.color;
-        c.fillRect(this.position.x, this.position.y, this.width, this.height);
+        for (const sprite in this.sprites) {
+            sprites[sprite].image = new Image();
+            sprites[sprite].image.src = sprites[sprite].imgSrc;
+        }
     }
 
     gravity() {
@@ -96,7 +166,60 @@ class Character {
         }
     }
 
-    update() {
-        this.draw();
+    switchSprite(sprite) {
+        switch (sprite) {
+            case "idleRight":
+                if (this.image !== this.sprites.idleRight.image) {
+                    this.image = this.sprites.idleRight.image;
+                    this.framesMax = this.sprites.idleRight.framesMax
+                }
+                break;
+            case "idleLeft":
+                if (this.image !== this.sprites.idleLeft.image) {
+                    this.image = this.sprites.idleLeft.image;
+                    this.framesMax = this.sprites.idleLeft.framesMax
+                }
+                break;
+            case "runRight":
+                if (this.image !== this.sprites.runRight.image) {
+                    this.image = this.sprites.runRight.image;
+                    this.framesMax = this.sprites.runRight.framesMax
+                }
+                break;
+            case "runLeft":
+                if (this.image !== this.sprites.runLeft.image) {
+                    this.image = this.sprites.runLeft.image;
+                    this.framesMax = this.sprites.runLeft.framesMax
+                }
+                break;
+            case "jumpRight":
+                if (this.image !== this.sprites.jumpRight.image) {
+                    this.image = this.sprites.jumpRight.image;
+                    this.framesMax = this.sprites.jumpRight.framesMax
+                    this.framesCurrent = 0
+                }
+                break;
+            case "jumpLeft":
+                if (this.image !== this.sprites.jumpLeft.image) {
+                    this.image = this.sprites.jumpLeft.image;
+                    this.framesMax = this.sprites.jumpLeft.framesMax
+                    this.framesCurrent = 0
+                }
+                break;
+            case "fallRight":
+                if (this.image !== this.sprites.fallRight.image) {
+                    this.image = this.sprites.fallRight.image;
+                    this.framesMax = this.sprites.fallRight.framesMax
+                    this.framesCurrent = 0
+                }
+                break;
+            case "fallLeft":
+                if (this.image !== this.sprites.fallLeft.image) {
+                    this.image = this.sprites.fallLeft.image;
+                    this.framesMax = this.sprites.fallLeft.framesMax
+                    this.framesCurrent = 0
+                }
+                break;
+        }
     }
 }
