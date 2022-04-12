@@ -18,9 +18,6 @@ class Img {
     }
 
     draw() {
-        // c.fillStyle = "red"
-        // c.fillRect(this.position.x, this.position.y, this.width, this.height)
-
         c.drawImage(
             this.image,
             this.framesCurrent * (this.image.width / this.framesMax),
@@ -58,7 +55,7 @@ class Sprite extends Img {
         framesMax = 1,
         offset = { x: 0, y: 0 },
     }) {
-        super ({
+        super({
             position,
             imgSrc,
             scale,
@@ -120,8 +117,8 @@ class Sprite extends Img {
         }
 
         if (player.position.x < 250 && player.position.y + player.height >= 800) {
-            document.querySelector("#controls").style.display = "block"
-        } else document.querySelector("#controls").style.display = "none"
+            document.querySelector("#controls").style.display = "block";
+        } else document.querySelector("#controls").style.display = "none";
     }
 
     update() {
@@ -129,8 +126,6 @@ class Sprite extends Img {
         this.collision();
     }
 }
-
-
 
 class Character extends Img {
     constructor({
@@ -238,6 +233,13 @@ class Character extends Img {
                     this.framesCurrent = 0;
                 }
                 break;
+        }
+    }
+
+    hitboxToggle() {
+        if (hitbox) {
+            c.fillStyle = "red";
+            c.fillRect(this.position.x, this.position.y, this.width, this.height);
         }
     }
 }

@@ -1,5 +1,6 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
+let hitbox = 0;
 
 canvas.width = 1440;
 canvas.height = 900;
@@ -184,6 +185,7 @@ function animate() {
     platform5.update();
     platform6.update();
     platform7.update();
+    player.hitboxToggle();
     player.update();
 
     player.velocity.x = 0;
