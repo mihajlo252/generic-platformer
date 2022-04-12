@@ -3,10 +3,19 @@
     font-family: 'MedievalSharp', cursive;
 } 
 
-p {
+#goal > p {
     position: absolute;
     font-size: 40px;
     top: 100px;
     left: 700px;
     color: rgb(255, 0, 0);
+}
+
+#controls{
+    position: absolute;
+    font-size: 40px;
+    top: 400px;
+    left: 100px;
+    color: rgb(255, 0, 0);
+    display: none;
 }

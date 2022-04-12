@@ -114,9 +114,14 @@ class Sprite extends Img {
             player.velocity.x = 0;
             player.position.x = this.position.x + this.width;
         }
+
         if (player.position.x < 250 && player.position.y + player.height <= 200) {
             document.querySelector("p").innerText = "VICTORY!";
         }
+
+        if (player.position.x < 250 && player.position.y + player.height >= 800) {
+            document.querySelector("#controls").style.display = "block"
+        } else document.querySelector("#controls").style.display = "none"
     }
 
     update() {
@@ -124,6 +129,8 @@ class Sprite extends Img {
         this.collision();
     }
 }
+
+
 
 class Character extends Img {
     constructor({
