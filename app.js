@@ -13,9 +13,9 @@ const background = new Sprite({
         x: 0,
         y: 0,
     },
-    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Background/sky_cloud.png",
+    imgSrc: "assets/Background Pack/forest_tileset_lite/Sprites/Background/background_1.png",
     framesMax: 1,
-    scale: 5,
+    scale: 1,
 });
 
 const player = new Character({
@@ -171,9 +171,11 @@ const keys = {
 
 function animate() {
     window.requestAnimationFrame(animate);
-    // c.fillStyle = "black";
-    // c.fillRect(0, 0, canvas.width, canvas.height);
+    c.fillStyle = "black";
+    c.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
+    c.fillStyle = "rgba(255, 255, 255, 0.2)";
+    c.fillRect(0, 0, canvas.width, canvas.height);
     player.gravity();
     platform1.update();
     platform2.update();
@@ -187,7 +189,7 @@ function animate() {
     player.velocity.x = 0;
 
     // player movement
-
+    
     if (keys.a.pressed && player.lastKey === "a") {
         player.velocity.x = -8;
         player.switchSprite("runLeft");
@@ -218,6 +220,11 @@ function animate() {
 }
 
 animate();
+
+window.addEventListener("load", (event) => {
+    player.lastKey = "d"
+})
+
 
 window.addEventListener("keydown", (event) => {
     switch (event.key) {

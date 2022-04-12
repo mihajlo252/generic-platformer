@@ -13,7 +13,7 @@ class Img {
         this.framesMax = framesMax;
         this.framesCurrent = 0;
         this.framesElapsed = 0;
-        this.framesHold = 5;
+        this.framesHold = 7;
         this.offset = offset;
     }
 
