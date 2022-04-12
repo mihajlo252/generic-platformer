@@ -191,7 +191,7 @@ function animate() {
     player.velocity.x = 0;
 
     // player movement
-    
+
     if (keys.a.pressed && player.lastKey === "a") {
         player.velocity.x = -8;
         player.switchSprite("runLeft");
@@ -222,17 +222,42 @@ function animate() {
 }
 
 animate();
+const buttonA = document.querySelector("#buttonA");
+const buttonD = document.querySelector("#buttonD");
+const buttonW = document.querySelector("#buttonW");
 
-window.addEventListener("load", (event) => {
-    player.lastKey = "d"
-})
+window.addEventListener("load", () => {
+    player.lastKey = "d";
+});
 
+buttonA.addEventListener("click", () => {
+    window.dispatchEvent(
+        new KeyboardEvent("keydown", {
+            key: "a",
+        })
+    );
+});
+buttonD.addEventListener("click", () => {
+    window.dispatchEvent(
+        new KeyboardEvent("keydown", {
+            key: "d",
+        })
+    );
+});
+buttonW.addEventListener("click", () => {
+    window.dispatchEvent(
+        new KeyboardEvent("keydown", {
+            key: "w",
+        })
+    );
+});
 
 window.addEventListener("keydown", (event) => {
     switch (event.key) {
         case "d":
             keys.d.pressed = true;
             player.lastKey = "d";
+            console.log(player.lastKey);
             break;
         case "a":
             keys.a.pressed = true;

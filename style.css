@@ -3,6 +3,7 @@
     font-family: 'MedievalSharp', cursive;
 } 
 
+
 #goal > p {
     position: absolute;
     font-size: 40px;
@@ -11,11 +12,49 @@
     color: rgb(255, 0, 0);
 }
 
-#controls{
+#controls {
     position: absolute;
     font-size: 40px;
     top: 400px;
     left: 100px;
     color: rgb(255, 0, 0);
     display: none;
+}
+
+#mobile-controls {
+    display: none;
+}
+
+@media screen and (max-width: 500px){
+
+    body, html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    #mobile-controls {
+        position: relative;
+        top: 100px;
+        left: 125%;
+        /* transform: translateX(-50%); */
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #mobile-controls  button {
+        width: 10rem;
+        height: 10rem;
+        font-size: 3rem;
+        
+    }
+    #mobile-controls > div {
+        display: flex;
+        flex-direction: row;
+        gap: 10rem;
+    }
+    
 }
