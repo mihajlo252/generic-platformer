@@ -116,7 +116,7 @@ class Sprite extends Img {
             document.querySelector("p").innerText = "VICTORY!";
         }
 
-        if (player.position.x < 250 && player.position.y + player.height >= 800) {
+        if (player.position.x < 250 && player.position.y + player.height >= 500) {
             document.querySelector("#controls").style.display = "block";
         } else document.querySelector("#controls").style.display = "none";
     }
