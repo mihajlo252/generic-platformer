@@ -46,15 +46,15 @@
     }
 
     #mobile-controls  button {
-        width: 10rem;
-        height: 10rem;
-        font-size: 3rem;
+        width: 20rem;
+        height: 20rem;
+        font-size: 5rem;
         
     }
     #mobile-controls > div {
         display: flex;
         flex-direction: row;
-        gap: 10rem;
+        gap: 30rem;
     }
     
 }

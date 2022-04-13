@@ -230,23 +230,44 @@ window.addEventListener("load", () => {
     player.lastKey = "d";
 });
 
-buttonA.addEventListener("click", () => {
+buttonA.addEventListener("touchstart", () => {
     window.dispatchEvent(
         new KeyboardEvent("keydown", {
             key: "a",
         })
     );
 });
-buttonD.addEventListener("click", () => {
+buttonA.addEventListener("touchend", () => {
+    window.dispatchEvent(
+        new KeyboardEvent("keyup", {
+            key: "a",
+        })
+    );
+});
+buttonD.addEventListener("touchstart", () => {
     window.dispatchEvent(
         new KeyboardEvent("keydown", {
             key: "d",
         })
     );
 });
-buttonW.addEventListener("click", () => {
+buttonD.addEventListener("touchend", () => {
+    window.dispatchEvent(
+        new KeyboardEvent("keyup", {
+            key: "d",
+        })
+    );
+});
+buttonW.addEventListener("touchstart", () => {
     window.dispatchEvent(
         new KeyboardEvent("keydown", {
+            key: "w",
+        })
+    );
+});
+buttonW.addEventListener("touchend", () => {
+    window.dispatchEvent(
+        new KeyboardEvent("keyup", {
             key: "w",
         })
     );
