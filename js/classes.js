@@ -62,8 +62,6 @@ class Sprite extends Img {
             framesMax,
             offset,
         });
-
-        this.position = position;
         this.height = height * this.scale;
         this.width = width * this.scale;
         this.framesCurrent = 0;

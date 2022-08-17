@@ -21,8 +21,8 @@ const background = new Sprite({
 
 const player = new Character({
     position: {
-        x: 200,
-        y: 400,
+        x: 100,
+        y: 500,
     },
     velocity: {
         x: 0,
@@ -171,7 +171,9 @@ const keys = {
 };
 
 function animate() {
-    window.requestAnimationFrame(animate);
+    // setTimeout(() => {
+        window.requestAnimationFrame(animate);
+    // }, 1000 / 60);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
