@@ -171,9 +171,9 @@ const keys = {
 };
 
 function animate() {
-    // setTimeout(() => {
+    setTimeout(() => {
         window.requestAnimationFrame(animate);
-    // }, 1000 / 60);
+    }, 1000 / 60);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
