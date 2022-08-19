@@ -173,7 +173,7 @@ const keys = {
 function animate() {
     setTimeout(() => {
         window.requestAnimationFrame(animate);
-    }, 1000 / 60);
+    }, 60 / 1000);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
