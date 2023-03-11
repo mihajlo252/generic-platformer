@@ -175,7 +175,7 @@ const frameRate = 1000 / 60;
 function animate() {
     setTimeout(() => {
         window.requestAnimationFrame(animate);
-    }, frameRate);
+    }, 1000 / 60);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
