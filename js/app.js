@@ -175,7 +175,7 @@ let frameRate = 1000 / 60;
 function animate() {
     setTimeout(() => {
         window.requestAnimationFrame(animate);
-    }, 1000 / 60);
+    }, frameRate);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
@@ -282,7 +282,6 @@ window.addEventListener("keydown", (event) => {
         case "d":
             keys.d.pressed = true;
             player.lastKey = "d";
-            console.log(player.lastKey);
             break;
         case "a":
             keys.a.pressed = true;
