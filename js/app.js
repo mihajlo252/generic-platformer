@@ -170,7 +170,7 @@ const keys = {
     },
 };
 
-let frameRate = 1000 / 60;
+let frameRate = 1000 / 90;
 
 function animate() {
     setTimeout(() => {
