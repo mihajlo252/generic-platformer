@@ -170,10 +170,12 @@ const keys = {
     },
 };
 
+const frameRate = 1000 / 60;
+
 function animate() {
-    // setTimeout(() => {
+    setTimeout(() => {
         window.requestAnimationFrame(animate);
-    // }, 1000 / 60);
+    }, frameRate);
     c.fillStyle = "black";
     c.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
