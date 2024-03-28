@@ -172,7 +172,14 @@ const keys = {
 
 let frameRate = 1000 / 90;
 
-function animate() {
+
+async function getHtml() {
+    const response = await fetch("menu.html");
+    const html = await response.text();
+    return html
+}
+
+async function animate() {
     setTimeout(() => {
         window.requestAnimationFrame(animate);
     }, frameRate);
@@ -181,16 +188,20 @@ function animate() {
     background.update();
     c.fillStyle = "rgba(255, 255, 255, 0.2)";
     c.fillRect(0, 0, canvas.width, canvas.height);
-    player.gravity();
-    platform1.update();
-    platform2.update();
-    platform3.update();
-    platform4.update();
-    platform5.update();
-    platform6.update();
-    platform7.update();
-    player.hitboxToggle();
-    player.update();
+
+    if(document.querySelector(".ui").dataset.level == "demoLevel") {
+        demoLevel(player, platform1, platform2, platform3, platform4, platform5, platform6, platform7);
+    }
+    // player.gravity();
+    // platform1.update();
+    // platform2.update();
+    // platform3.update();
+    // platform4.update();
+    // platform5.update();
+    // platform6.update();
+    // platform7.update();
+    // player.hitboxToggle();
+    // player.update();
 
     player.velocity.x = 0;
 
@@ -226,6 +237,8 @@ function animate() {
 }
 
 animate();
+
+
 const buttonA = document.querySelector("#buttonA");
 const buttonD = document.querySelector("#buttonD");
 const buttonW = document.querySelector("#buttonW");

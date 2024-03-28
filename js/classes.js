@@ -111,12 +111,12 @@ class Sprite extends Img {
         }
 
         if (player.position.x < 250 && player.position.y + player.height <= 200) {
-            document.querySelector("p").innerText = "VICTORY!";
+            document.querySelector("#goal-text").innerText = "VICTORY!";
         }
 
-        if (player.position.x < 250 && player.position.y + player.height >= 500) {
-            document.querySelector("#controls").style.display = "block";
-        } else document.querySelector("#controls").style.display = "none";
+        // if (player.position.x < 250 && player.position.y + player.height >= 500) {
+        //     document.querySelector("#controls").style.display = "block";
+        // } else document.querySelector("#controls").style.display = "none";
     }
 
     update() {
