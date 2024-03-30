@@ -6,15 +6,46 @@
 }
 
 body {
-    background-color: #333;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .ui {
+    z-index: 800;
+    width: 1440px;
+    height: 100%;
+    padding: 5rem 10rem;
+}
+
+.ui > div {
     position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.ui > div > button {
+    background-color: transparent;
+    border: none;
+    border-radius: 100vh;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+.ui > div > button:hover {
+    background-color: bisque;
 }
 
 canvas {
     position: absolute;
+
 }
 
 #goal > p {
@@ -23,16 +54,17 @@ canvas {
     top: 100px;
     left: 700px;
     color: rgb(255, 0, 0);
-    z-index: 999;
+    z-index: 800;
 }
 
 #controls {
     position: absolute;
     font-size: 40px;
     top: 400px;
-    left: 100px;
+    left: 250px;
     color: rgb(255, 0, 0);
     display: none;
+    z-index: 800;
 }
 
 #mobile-controls {
@@ -48,9 +80,16 @@ canvas {
         margin: 0;
     }
 
+    .ui {
+        z-index: 800;
+        width: 100vw;
+        height: 200px;
+        padding: 5rem 10rem;
+    }
+
     #mobile-controls {
-        position: relative;
-        top: 20px;
+        position: absolute;
+        top: 600px;
         left: 0a;
         /* transform: translateX(-50%); */
         display: flex;
@@ -59,6 +98,7 @@ canvas {
         align-items: center;
         gap: 1rem;
         user-select: none;
+        z-index: 999;
     }
 
     #mobile-controls button {

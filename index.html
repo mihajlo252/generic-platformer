@@ -9,26 +9,25 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="menu.html" rel="import" />
 		<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
-		<script src="js/menu.js" defer></script>
+		<script src="js/platform.js" defer></script>
+		<script src="js/updateUI.js" defer></script>
 		<script src="js/classes.js" defer></script>
+		<script src="js/menu.js" defer></script>
+		<script src="js/endLevel.js" defer></script>
+		<script src="js/level2.js" defer></script>
 		<script src="js/demoLevel.js" defer></script>
 		<script src="js/app.js" defer></script>
 		<title>Web game</title>
 	</head>
 	<body>
-		<div id="goal">
-			<p id="goal-text">Get to the top</p>
-		</div>
-		<!-- <div id="controls">
+		
+		<div id="controls">
             <p>A: left</p>
             <p>D: right</p>
             <p>W: jump</p>
-        </div> -->
+        </div>
 		<canvas></canvas>
-		<!-- <div class="ui" data-level="menu">
-			<h1>Welcome to Generic Platformer</h1>
-			<button id="start">Start</button>
-		</div> -->
+		<div class="ui" data-level="menu"></div>
 
 		<div id="mobile-controls">
 			<button id="buttonW">W</button>
@@ -37,20 +36,5 @@
 				<button id="buttonD">D</button>
 			</div>
 		</div>
-
-		<script>
-			const start = document.querySelector("#start");
-			const ui = document.querySelector(".ui");
-			const goalText = document.querySelector("#goal-text");
-
-			// if (ui.dataset.level == "demoLevel") {
-			// 	goalText.style.display = "none";
-			// }
-
-			// start.addEventListener("click", () => {
-			// 	ui.dataset.level = "demoLevel";
-			// 	ui.style.display = "none";
-			// });
-		</script>
 	</body>
 </html>
