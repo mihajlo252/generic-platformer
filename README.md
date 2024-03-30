@@ -1,5 +1,5 @@
 # Generic platformer
-A simple, 1 level, platformer video game demo
+A quick and simple platformer game utilising HTML canvas and OOP JavaScript
 
 
 Credits: 

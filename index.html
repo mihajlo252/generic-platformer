@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap"
-            rel="stylesheet"
-        />
-        <script src="js/util.js" defer></script>
-        <script src="js/classes.js" defer></script>
-        <script src="js/app.js" defer></script>
-        <title>Web game</title>
-    </head>
-    <body>
-        <div id="goal">
-            <p>Get to the top</p>
-        </div>
-        <div id="controls">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="menu.html" rel="import" />
+		<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
+		<script src="js/platform.js" defer></script>
+		<script src="js/updateUI.js" defer></script>
+		<script src="js/classes.js" defer></script>
+		<script src="js/menu.js" defer></script>
+		<script src="js/endLevel.js" defer></script>
+		<script src="js/level2.js" defer></script>
+		<script src="js/demoLevel.js" defer></script>
+		<script src="js/app.js" defer></script>
+		<title>Web game</title>
+	</head>
+	<body>
+		
+		<div id="controls">
             <p>A: left</p>
             <p>D: right</p>
             <p>W: jump</p>
         </div>
-        <canvas></canvas>
-        <div id="mobile-controls">
-            <button id="buttonW">W</button>
-            <div>
-                <button id="buttonA">A</button>
-                <button id="buttonD">D</button>
-            </div>
-        </div>
-    </body>
+		<canvas></canvas>
+		<div class="ui" data-level="menu"></div>
+
+		<div id="mobile-controls">
+			<button id="buttonW">W</button>
+			<div>
+				<button id="buttonA">A</button>
+				<button id="buttonD">D</button>
+			</div>
+		</div>
+	</body>
 </html>
