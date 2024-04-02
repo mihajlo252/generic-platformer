@@ -86,8 +86,6 @@ const platform1 = new Sprite({
 	scale: 1,
 });
 
-
-
 const keys = {
 	a: {
 		pressed: false,
@@ -116,17 +114,17 @@ function animate() {
 	c.fillStyle = "rgba(255, 255, 255, 0.2)";
 	c.fillRect(0, 0, canvas.width, canvas.height);
 
-	if (document.querySelector(".ui").dataset.level == "demoLevel") {
-		demoLevel(player, platform1);
+	if (document.querySelector(".ui").dataset.level == "level1") {
+		level1(player, platform1);
 	}
 	if (document.querySelector(".ui").dataset.level == "level2") {
 		level2(player, platform1);
 	}
 	if (document.querySelector(".ui").dataset.level == "end") {
-		endLevel(player, platform1);
+		levelCredits(player, platform1);
 	}
 
-	
+	player.hitboxToggle();
 
 	player.velocity.x = 0;
 	wall(-50).update();

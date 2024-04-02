@@ -13,7 +13,7 @@ const getPlatform = (x, y) => {
   return smallPlatform
 }
 const invisPlatform = (x, y) => {
-  const smallPlatform = new Sprite({
+  const invisPlatform = new Sprite({
     position: {
         x: x,
         y: y,
@@ -24,7 +24,7 @@ const invisPlatform = (x, y) => {
     framesMax: 1,
     scale: 1,
   });
-  return smallPlatform
+  return invisPlatform
 }
 
 const wall = (x) => {
