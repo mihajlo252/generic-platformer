@@ -10,8 +10,5 @@ function level2(player, platform1) {
     invisPlatform(800, 500).update();
     getPlatform(650, 200).update();
     invisPlatform(500, 250).update();
-    player.hitboxToggle();
     player.update();
 }
-
-// x: 950, y: 700,

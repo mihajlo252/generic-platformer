@@ -7,8 +7,8 @@ window.onload = async () => {
 
 const handleStart = () => {
 	deleteHtml();
-	getHtmlFromFile("./components/demoLevel.html");
-  ui.dataset.level = "demoLevel";
+	getHtmlFromFile("./components/level1.html");
+  ui.dataset.level = "level1";
 };
 
 

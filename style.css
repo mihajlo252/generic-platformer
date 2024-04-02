@@ -134,4 +134,8 @@ canvas {
         width: 420px;
         height: 285px;
     }
+
+    .credits {
+        scale: .7;
+    }
 }
